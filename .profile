@@ -28,8 +28,7 @@ fi
 
 export PATH=$PATH:$HOME/.local/bin
 export PATH=$PATH:$HOME/bin
-export PATH="${KREW_ROOT:-$HOME/.krew}/bin:$PATH"
-. "$HOME/.cargo/env"
+# . "$HOME/.cargo/env"
 if [[ $(uname) == "Darwin" ]]; then
     eval $(/opt/homebrew/bin/brew shellenv)
 else

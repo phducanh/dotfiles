@@ -748,7 +748,8 @@
     "fzf-quick-open.ripgrepSearchStyle": "Smart case",
     "[shellscript]": {
         "editor.defaultFormatter": "foxundermoon.shell-format"
-    }
+    },
+    "tabnine.experimentalAutoImports": true
     // "rust-analyzer.cargo.extraEnv": {
     //     "CARGO_HOME"
     // }
