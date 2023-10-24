@@ -64,36 +64,6 @@ if [ -f $HOME/.local/share/rtx/bin/rtx ]; then
     zi snippet $ZSH_CACHE_DIR/completions/_rtx
 fi
 
-if rtx which kubectl &>/dev/null ; then
-    alias k=kubectl
-    alias kaf='kubectl apply -f'
-    if [[ ! -f "$ZSH_CACHE_DIR/completions/_kubectl" ]]; then
-        kubectl completion zsh 2> /dev/null >| "$ZSH_CACHE_DIR/completions/_kubectl"
-    fi
-    zi ice as"completion"
-    zi snippet $ZSH_CACHE_DIR/completions/_kubectl
-fi
-
-if rtx which helm &>/dev/null ; then
-    
-    if [[ ! -f "$ZSH_CACHE_DIR/completions/_helm" ]]; then
-        helm completion zsh 2> /dev/null >| "$ZSH_CACHE_DIR/completions/_helm"
-    fi
-    zi ice as"completion"
-    zi snippet $ZSH_CACHE_DIR/completions/_helm
-fi
-
-# if [ -f $HOME/.asdf/asdf.sh ]; then
-#     zi ice pick="asdf.sh"
-#     zi load $HOME/.asdf
-#   if [[ -f  "${XDG_CONFIG_HOME:-$HOME/.config}/asdf-direnv/zshrc" ]]; then
-#     source "${XDG_CONFIG_HOME:-$HOME/.config}/asdf-direnv/zshrc"
-#   fi
-#     asdf-tool-version-plugin(){
-#         cut -d' ' -f1 ~/.tool-versions| xargs -I{} asdf plugin add {}
-#     }
-# fi
-
 zi lucid for \
 OMZL::history.zsh
 zi wait lucid for \
@@ -129,15 +99,14 @@ if [ -f ~/.fzf.zsh ]; then
     zi light wfxr/forgit
 fi
 
-
 # zi ice depth=1
 # zi light jeffreytse/zsh-vi-mode
 
-zi ice as"completion"
-zi snippet https://github.com/docker/cli/blob/master/contrib/completion/zsh/_docker
+# zi ice as"completion"
+# zi snippet https://github.com/docker/cli/blob/master/contrib/completion/zsh/_docker
 
-zi ice as"completion"
-zi snippet https://github.com/docker/compose/blob/v1/contrib/completion/zsh/_docker-compose
+# zi ice as"completion"
+# zi snippet https://github.com/docker/compose/blob/v1/contrib/completion/zsh/_docker-compose
 
 
 zi snippet OMZ::lib/theme-and-appearance.zsh
@@ -156,20 +125,13 @@ z-shell/z-a-meta-plugins \
 zi ice as"command" from"gh-r" mv"delta* -> delta" pick"delta/delta"
 zi light dandavison/delta
 
-if command -v nvim &> /dev/null
-then
-    alias vim="nvim"
-    export EDITOR='nvim'
-    alias nvimo="nvim -u NORC  --noplugin"
-    alias vimo="/usr/bin/vim"
-fi
-
-export SDKMAN_DIR="$HOME/.sdkman"
-zi ice wait lucid as"program" pick"$HOME/.sdkman/bin/sdk" id-as'sdkman' run-atpull \
-atclone"wget https://get.sdkman.io -O $HOME/.sdkman/scr.sh; bash $HOME/.sdkman/scr.sh" \
-atpull"sdk selfupdate" \
-atinit"source $HOME/.sdkman/bin/sdkman-init.sh"
-zi light z-shell/null
+# if command -v nvim &> /dev/null
+# then
+#     alias vim="nvim"
+#     export EDITOR='nvim'
+#     alias nvimo="nvim -u NORC  --noplugin"
+#     alias vimo="/usr/bin/vim"
+# fi
 
 zi ice lucid wait as'completion' blockf has'cargo'
 zi snippet https://github.com/rust-lang/cargo/blob/master/src/etc/_cargo
@@ -177,8 +139,8 @@ zi snippet https://github.com/rust-lang/cargo/blob/master/src/etc/_cargo
 zi ice lucid wait as'completion' blockf has'rg'
 zi snippet https://github.com/BurntSushi/ripgrep/blob/master/complete/_rg
 
-zi ice lucid wait as'completion' blockf has'youtube-dl' mv'youtube-dl.zsh -> _youtube-dl'
-zi snippet https://github.com/ytdl-org/youtube-dl/blob/master/youtube-dl.plugin.zsh
+# zi ice lucid wait as'completion' blockf has'youtube-dl' mv'youtube-dl.zsh -> _youtube-dl'
+# zi snippet https://github.com/ytdl-org/youtube-dl/blob/master/youtube-dl.plugin.zsh
 
 zi wait lucid for \
 atinit"ZI[COMPINIT_OPTS]=-C; zicompinit; zicdreplay" \
